@@ -39,6 +39,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             color: Get.isDarkMode ? Colors.white : darkGreyClr,
           ),
         ),
+        centerTitle: true,
       ),
       body: SafeArea(
           child: Column(

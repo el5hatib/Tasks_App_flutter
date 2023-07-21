@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'ui/pages/home_page.dart';
 import 'package:get/get.dart';
-import 'ui/pages/notification_screen.dart';
+import 'package:my_tasks/ui/pages/home_page.dart';
+import 'services/theme_services.dart';
 import 'ui/theme.dart';
 
 void main() {
@@ -16,13 +16,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         theme: Themes.light,
         darkTheme: Themes.dark,
-        themeMode: ThemeMode.system,
+        themeMode: ThemeServices().theme,
 
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        home: NotificationScreen(
-          payload:
-              "To DO APP  |Building To Do App using Dart and Flutter |5:09 pm",
-        ));
+        home: const HomePage() ,
+    );
   }
 }
