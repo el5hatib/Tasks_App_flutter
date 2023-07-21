@@ -43,7 +43,7 @@ TextStyle get titleStyle => GoogleFonts.lato(
   );
   TextStyle get subTitleStyle => GoogleFonts.lato(
     textStyle: TextStyle(
-      color: Get.isDarkMode ? Colors.white : Colors.black,
+      color: Colors.grey,
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
     ),
