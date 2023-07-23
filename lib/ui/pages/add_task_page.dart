@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:my_tasks/controllers/task_controller.dart';
 import 'package:my_tasks/ui/theme.dart';
 import 'package:my_tasks/ui/widgets/input_field.dart';
-
+import '../../services/theme_services.dart';
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({Key? key}) : super(key: key);
 
@@ -24,7 +24,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
   String _selectedRepeat = 'None';
   List<String> repeatList = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
   int _selectedColor = 0;
-
   void _getDateFromUser() async {
     DateTime? _pickerDate = await showDatePicker(
       context: context,
@@ -75,13 +74,14 @@ class _AddTaskPageState extends State<AddTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: buildAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text('Add Task', style: Themes().headingStyle),
+              SizedBox(
+                height: 20,),
               InputField(
                 title: 'Title',
                 hint: 'Enter title her',
@@ -248,6 +248,32 @@ class _AddTaskPageState extends State<AddTaskPage> {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      actions: [
+        IconButton(
+          onPressed: () {
+           ThemeServices().switchTheme();
+          },
+          icon: Icon(
+            Get.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+            color: Get.isDarkMode ? Colors.amber : darkGreyClr,
+          ),
+        ),
+      ],
+      title: Text('Add Task'),
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+       icon: Icon (Icons.arrow_back_ios_rounded,
+        size: 24, color:Get.isDarkMode ? Colors.white : darkGreyClr,),
+      ),
+      centerTitle: true,
+      elevation: 0,
     );
   }
 
