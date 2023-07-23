@@ -50,4 +50,8 @@ class TaskController extends GetxController{
     taskList[taskIndex.value]['status'] = taskStatus.value;
     Get.back();
   }
+  void getTasks(){
+    taskList = taskList;
+  }
 }
+
