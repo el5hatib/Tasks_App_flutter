@@ -186,92 +186,32 @@ class _AddTaskPageState extends State<AddTaskPage> {
               SizedBox(
                 height: 20,
               ),
-              Row(
+         Row (
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 0;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[0],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(0),
                       SizedBox(
                         width: 16,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 1;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[1],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(1),
                       SizedBox(
                         width: 16,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 2;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[2],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(2),
                       SizedBox(
                         width: 16,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 3;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[3],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(3),
                       SizedBox(
                         width: 16,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 4;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[4],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(4),
                       SizedBox(
                         width: 16,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _selectedColor = 5;
-                          });
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Themes().colors[5],
-                          radius: 15,
-                        ),
-                      ),
+                      chooseNoteColor(5),
                     ],
                   ),
                 ],
@@ -293,7 +233,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       color: _selectedColor,
                     );*/
                   },
-                  child: Text('Add Task'),
+                  child: Text('Creat Task'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Themes().colors[_selectedColor],
                     padding: EdgeInsets.symmetric(vertical: 16),
@@ -310,5 +250,25 @@ class _AddTaskPageState extends State<AddTaskPage> {
         ),
       ),
     );
+  }
+
+  GestureDetector chooseNoteColor(int value) {
+    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedColor = value;
+                        });
+                      },
+                      child: CircleAvatar(
+                        child: _selectedColor == value
+                            ? Icon(
+                                Icons.check,
+                                color: Colors.white,
+                              )
+                            : null,
+                        backgroundColor: Themes().colors[value],
+                        radius: 15,
+                      ),
+                    );
   }
 }
