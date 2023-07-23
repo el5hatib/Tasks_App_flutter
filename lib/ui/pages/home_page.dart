@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_tasks/services/theme_services.dart';
+import 'package:my_tasks/ui/pages/add_task_page.dart';
 import 'package:my_tasks/ui/size_config.dart';
-
 import '../widgets/button.dart';
-import 'notification_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
           child: MyButton(label: 'Go To ', onTap: () {
-            Get.to(NotificationScreen(payload: "ToDO | Flutter App | 6 : 33 pm "));
+            Get.to(AddTaskPage());
           },),
         ),
     );

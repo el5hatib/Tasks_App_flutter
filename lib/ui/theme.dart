@@ -5,6 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 const Color bluishClr = Color(0xFF4e5ae8);
 const Color orangeClr = Color(0xCFFF8746);
 const Color pinkClr = Color(0xFFff4667);
+const Color greyblueClr = Color(0xFFc9d1d9);
+const Color tealClr= Color(0xFF00b5ad);
+const Color purbleCLr = Color(0xFF6f42c1);
 const Color white = Colors.white;
 const primaryClr = bluishClr;
 const Color darkGreyClr = Color(0xFF121212);
@@ -62,6 +65,14 @@ TextStyle get titleStyle => GoogleFonts.lato(
       fontWeight: FontWeight.normal,
     ),
   );
+  List<Color> colors = [
+    bluishClr,
+    orangeClr,
+    pinkClr,
+    greyblueClr,
+    tealClr ,
+    purbleCLr
+  ];
 
 
 }
