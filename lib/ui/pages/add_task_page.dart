@@ -24,6 +24,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   String _selectedRepeat = 'None';
   List<String> repeatList = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
   int _selectedColor = 0;
+
   void _getDateFromUser() async {
     DateTime? _pickerDate = await showDatePicker(
       context: context,
@@ -39,6 +40,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       print('It is null');
     }
   }
+
   void _getTimeFromUser({required bool isStartTime}) async {
     TimeOfDay? _pickerTime = await showTimePicker(
       context: context,
@@ -56,6 +58,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       print('It is null');
     }
   }
+
   /*void _addTask() {
     _taskController.addTask(
       title: _titleController.text,
@@ -99,7 +102,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   icon: Icon(Icons.calendar_today),
                 ),
               ),
-
               Row(
                 children: [
                   Expanded(
@@ -136,7 +138,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 hint: '$_selectedRemind minutes early',
                 widget: DropdownButton(
                   borderRadius: BorderRadius.circular(12),
-                 dropdownColor: Colors.blueGrey,
+                  dropdownColor: Colors.blueGrey,
                   value: _selectedRemind,
                   items: remindList.map((int item) {
                     return DropdownMenuItem<int>(
@@ -144,7 +146,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: Text(
                         '$item',
                         style: TextStyle(
-                          color : Get.isDarkMode? Colors.white : darkGreyClr,
+                          color: Get.isDarkMode ? Colors.white : darkGreyClr,
                         ),
                       ),
                     );
@@ -170,7 +172,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       child: Text(
                         item,
                         style: TextStyle(
-                          color : Get.isDarkMode? Colors.white : darkGreyClr,
+                          color: Get.isDarkMode ? Colors.white : darkGreyClr,
                         ),
                       ),
                     );
@@ -186,7 +188,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
               SizedBox(
                 height: 20,
               ),
-         Row (
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
@@ -216,13 +218,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                 ],
               ),
-
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20 ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: ElevatedButton(
                   onPressed: () {
-                   /* _taskController.addTask(
+                    /* _taskController.addTask(
                       title: _titleController.text,
                       note: _noteController.text,
                       date: _selectedDate,
@@ -242,9 +243,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ),
                   ),
                 ),
-
               ),
-
             ],
           ),
         ),
@@ -254,21 +253,21 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   GestureDetector chooseNoteColor(int index) {
     return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _selectedColor = index;
-                        });
-                      },
-                      child: CircleAvatar(
-                        child: _selectedColor == index
-                            ? Icon(
-                                Icons.check,
-                                color: Colors.white,
-                              )
-                            : null,
-                        backgroundColor: Themes().colors[index],
-                        radius: 15,
-                      ),
-                    );
+      onTap: () {
+        setState(() {
+          _selectedColor = index;
+        });
+      },
+      child: CircleAvatar(
+        child: _selectedColor == index
+            ? Icon(
+                Icons.check,
+                color: Colors.white,
+              )
+            : null,
+        backgroundColor: Themes().colors[index],
+        radius: 15,
+      ),
+    );
   }
 }
