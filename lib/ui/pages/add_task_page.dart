@@ -252,21 +252,21 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 
-  GestureDetector chooseNoteColor(int value) {
+  GestureDetector chooseNoteColor(int index) {
     return GestureDetector(
                       onTap: () {
                         setState(() {
-                          _selectedColor = value;
+                          _selectedColor = index;
                         });
                       },
                       child: CircleAvatar(
-                        child: _selectedColor == value
+                        child: _selectedColor == index
                             ? Icon(
                                 Icons.check,
                                 color: Colors.white,
                               )
                             : null,
-                        backgroundColor: Themes().colors[value],
+                        backgroundColor: Themes().colors[index],
                         radius: 15,
                       ),
                     );
