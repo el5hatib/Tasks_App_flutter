@@ -1,5 +1,7 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:my_tasks/controllers/task_controller.dart';
 import 'package:my_tasks/services/theme_services.dart';
@@ -17,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+DateTime _selectedValue = DateTime.now();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -25,8 +27,8 @@ class _HomePageState extends State<HomePage> {
       appBar: buildAppBar(),
       body: Column(
         children: [
-          //_addDateBar(),
           _addTaskBar(),
+          _addDateBar(),
           SizedBox(height: SizeConfig.screenHeight*0.02,),
           //_showTask(),
 
@@ -58,7 +60,44 @@ class _HomePageState extends State<HomePage> {
       elevation: 0,
     );
   }
-}
+  _addDateBar(){
+    return Container(
+        margin: EdgeInsets.all(10),
+        child: DatePicker(
+            DateTime.now(),
+            width: 60,
+            height: 80,
+            initialSelectedDate: DateTime.now(),
+            selectionColor: Themes().colors[0],
+            selectedTextColor: Colors.white,
+            dateTextStyle: GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color:  Colors.grey,
+              ),
+            ),
+            dayTextStyle:GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color:  Colors.grey,
+              ),
+            ),
+            monthTextStyle:GoogleFonts.lato(
+              textStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
+            onDateChange: (newDate) {
+              // New date selected
+              setState(() {
+                 _selectedValue = newDate;
+              });
+            })
+    );}
 _addTaskBar(){
   return Container(
     margin: EdgeInsets.all(15),
@@ -78,14 +117,17 @@ _addTaskBar(){
         MyButton(
           label: '+ Add Task',
           onTap: () async{
-           await Get.to(() => const AddTaskPage());
-           final TaskController _taskController = Get.put(TaskController());
-           _taskController.getTasks();
+            await Get.to(() => const AddTaskPage());
+            final TaskController _taskController = Get.put(TaskController());
+            _taskController.getTasks();
           },
         ),
       ],
     ),
   );
 }
-_addDateBar(){}
 _showTask(){}
+}
+
+
+
