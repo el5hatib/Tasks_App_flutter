@@ -8,7 +8,6 @@ class TaskController extends GetxController{
   var taskTime = ''.obs;
   var taskStatus = false.obs;
   var taskIndex = 0.obs;
-
   void addTask(){
     taskList.add({
       'title': taskTitle.value,
@@ -41,7 +40,7 @@ class TaskController extends GetxController{
     Get.back();
   }
 
-  void deleteTask(){
+  void deleteTask(param0){
     taskList.removeAt(taskIndex.value);
     Get.back();
   }
